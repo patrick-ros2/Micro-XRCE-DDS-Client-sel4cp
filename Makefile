@@ -62,3 +62,5 @@ build:
 			-DUCLIENT_PROFILE_UDP=0 \
 			-DUCLIENT_PROFILE_DISCOVERY=0
 	cd $(BUILD_DIR) && $(MAKE) -j $(NUM_PROCS)
+	# Install so that we can use the library in other projects.
+	cd $(BUILD_DIR) && sudo $(MAKE) install
