@@ -56,11 +56,11 @@ build:
 			-DCMAKE_CXX_COMPILER_WORKS=1 \
 			-DUCLIENT_SUPERBUILD=0 \
 			-DCMAKE_SYSTEM_NAME="Generic" \
-			-DPLATFORM_NAME="LwIP" \
+			-DPLATFORM_NAME="sel4cp" \
 			-DUCLIENT_PROFILE_SERIAL=0 \
 			-DUCLIENT_PROFILE_TCP=0 \
-			-DUCLIENT_PROFILE_UDP=0 \
-			-DUCLIENT_PROFILE_DISCOVERY=0
+			-DUCLIENT_PROFILE_UDP=1 \
+			-DUCLIENT_PROFILE_DISCOVERY=1
 	cd $(BUILD_DIR) && $(MAKE) -j $(NUM_PROCS)
 	# Install so that we can use the library in other projects.
 	cd $(BUILD_DIR) && sudo $(MAKE) install
