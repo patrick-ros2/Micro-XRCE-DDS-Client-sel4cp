@@ -7,7 +7,7 @@ BUILD_DIR = build
 # ==================================
 
 NUM_PROCS = 4
-REMOTE_USER_HOST = "patrick@vm_comp4961_ubuntu2204"
+REMOTE_USER_HOST = "patrick@vm_comp4961_ubuntu1804"
 REMOTE_DEST_DIR = "~/remote/$(shell hostname -s)/"
 
 .PHONY: push-remote
@@ -60,7 +60,8 @@ build:
 			-DUCLIENT_PROFILE_SERIAL=0 \
 			-DUCLIENT_PROFILE_TCP=0 \
 			-DUCLIENT_PROFILE_UDP=1 \
-			-DUCLIENT_PROFILE_DISCOVERY=1
+			-DUCLIENT_PROFILE_DISCOVERY=1 \
+			-DCMAKE_MODULE_PATH=./
 	cd $(BUILD_DIR) && $(MAKE) -j $(NUM_PROCS)
 	# Install so that we can use the library in other projects.
 	cd $(BUILD_DIR) && sudo $(MAKE) install
